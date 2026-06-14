@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="registan">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ильхом & Келин — Приглашение на свадьбу</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Forum&family=Spectral:ital,wght@0,400;0,500;1,400&family=Marck+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wedding/styles.css">
+</head>
+<body>
+
+<!-- background layers -->
+<div class="bg"></div>
+<svg class="bg-ornament" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <pattern id="bgp" width="84" height="84" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="27" y="27" width="30" height="30"></rect>
+        <rect x="27" y="27" width="30" height="30" transform="rotate(45 42 42)"></rect>
+      </g>
+      <circle cx="42" cy="42" r="2" fill="currentColor"></circle>
+      <circle cx="0" cy="0" r="1.6" fill="currentColor"></circle>
+      <circle cx="84" cy="0" r="1.6" fill="currentColor"></circle>
+      <circle cx="0" cy="84" r="1.6" fill="currentColor"></circle>
+      <circle cx="84" cy="84" r="1.6" fill="currentColor"></circle>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bgp)"></rect>
+</svg>
+<div class="bg-vignette"></div>
+<canvas id="petals"></canvas>
+
+<!-- SVG symbol definitions -->
+<svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="star8" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="2.5">
+      <rect x="20.5" y="20.5" width="59" height="59"></rect>
+      <rect x="20.5" y="20.5" width="59" height="59" transform="rotate(45 50 50)"></rect>
+      <circle cx="50" cy="50" r="15"></circle>
+    </g>
+    <rect x="44" y="44" width="12" height="12" transform="rotate(45 50 50)" fill="currentColor"></rect>
+  </symbol>
+  <symbol id="star8f" viewBox="0 0 100 100">
+    <g fill="currentColor">
+      <rect x="23" y="23" width="54" height="54"></rect>
+      <rect x="23" y="23" width="54" height="54" transform="rotate(45 50 50)"></rect>
+    </g>
+  </symbol>
+  <symbol id="rosette" viewBox="0 0 100 100">
+    <g fill="none" stroke="currentColor" stroke-width="2.2">
+      <circle cx="50" cy="50" r="40"></circle>
+      <circle cx="50" cy="50" r="9"></circle>
+      <ellipse cx="50" cy="27" rx="7" ry="15"></ellipse>
+      <ellipse cx="50" cy="27" rx="7" ry="15" transform="rotate(45 50 50)"></ellipse>
+      <ellipse cx="50" cy="27" rx="7" ry="15" transform="rotate(90 50 50)"></ellipse>
+      <ellipse cx="50" cy="27" rx="7" ry="15" transform="rotate(135 50 50)"></ellipse>
+      <ellipse cx="50" cy="27" rx="7" ry="15" transform="rotate(180 50 50)"></ellipse>
+      <ellipse cx="50" cy="27" rx="7" ry="15" transform="rotate(225 50 50)"></ellipse>
+      <ellipse cx="50" cy="27" rx="7" ry="15" transform="rotate(270 50 50)"></ellipse>
+      <ellipse cx="50" cy="27" rx="7" ry="15" transform="rotate(315 50 50)"></ellipse>
+    </g>
+  </symbol>
+  <symbol id="chev" viewBox="0 0 24 24">
+    <path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+  <symbol id="arrow" viewBox="0 0 24 24">
+    <path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+</svg>
+
+<main class="wrap">
+
+  <!-- ============ COVER ============ -->
+  <section class="cover" data-screen-label="Обложка">
+    <div class="cover-frame reveal-scale">
+      <svg class="star corner tr"><use href="#star8"></use></svg>
+      <svg class="star corner bl"><use href="#star8"></use></svg>
+
+      <svg class="star star-top"><use href="#star8"></use></svg>
+      <div class="eyebrow cover-eyebrow">Таклифнома · Приглашение</div>
+
+      <h1 class="names">
+        <span class="n">Ильхом</span>
+        <span class="amp">ва &middot; и</span>
+        <span class="n">Келин</span>
+      </h1>
+
+      <div class="vow">Биз турмуш қурамиз &middot; Мы женимся</div>
+
+      <div class="date-row">
+        <span class="date-pill">3 сентября</span>
+        <span class="dot"></span>
+        <span class="date-pill">2026</span>
+      </div>
+      <div class="venue">Ресторан <b>«Рай»</b>, Сургут &middot; 17:00</div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Листайте</span>
+      <svg class="chev"><use href="#chev"></use></svg>
+    </div>
+  </section>
+
+  <div class="divider"><svg class="star"><use href="#star8"></use></svg></div>
+
+  <!-- ============ INVITE TEXT ============ -->
+  <section class="invite" data-screen-label="Приглашение">
+    <p class="lead-uz reveal">Ассалому алайкум, азиз меҳмонлар!</p>
+    <p class="ru reveal d1">С большой радостью и трепетом приглашаем вас разделить с нами самый светлый и долгожданный день — день нашей свадьбы.</p>
+    <p class="ru reveal d2"><span class="accent">Ҳаётимизнинг энг бахтли кунини</span> биз билан бирга нишонлашга чин дилдан таклиф этамиз. Ваше присутствие сделает этот праздник по-настоящему незабываемым.</p>
+  </section>
+
+  <div class="divider"><svg class="star"><use href="#star8"></use></svg></div>
+
+  <!-- ============ COUNTDOWN ============ -->
+  <section class="countdown" data-screen-label="Обратный отсчёт">
+    <div class="sec-head reveal">
+      <div class="kicker">Орзиқиб кутмоқдамиз</div>
+      <h2>До торжества</h2>
+      <div class="h2-uz">Тўйгача қолди</div>
+    </div>
+    <div class="count-grid reveal d1">
+      <div class="count-cell"><div class="count-num" id="cd-d">—</div><div class="count-lbl">дней<span class="lbl-uz">кун</span></div></div>
+      <div class="count-cell"><div class="count-num" id="cd-h">—</div><div class="count-lbl">часов<span class="lbl-uz">соат</span></div></div>
+      <div class="count-cell"><div class="count-num" id="cd-m">—</div><div class="count-lbl">минут<span class="lbl-uz">дақиқа</span></div></div>
+      <div class="count-cell"><div class="count-num" id="cd-s">—</div><div class="count-lbl">секунд<span class="lbl-uz">сония</span></div></div>
+    </div>
+  </section>
+
+  <div class="divider"><svg class="star"><use href="#star8"></use></svg></div>
+
+  <!-- ============ PROGRAM ============ -->
+  <section class="program" data-screen-label="Программа дня">
+    <div class="sec-head reveal">
+      <div class="kicker">Кун дастури</div>
+      <h2>Программа дня</h2>
+      <div class="h2-uz">Байрам тартиби</div>
+    </div>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-node"><svg class="star"><use href="#star8"></use></svg></div>
+        <div class="t-body">
+          <div class="t-time">16:30</div>
+          <div class="t-title">Встреча гостей</div>
+          <div class="t-uz">Меҳмонларни кутиб олиш</div>
+          <div class="t-note">Welcome-зона, шарбат и лёгкие закуски</div>
+        </div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-node"><svg class="star"><use href="#star8"></use></svg></div>
+        <div class="t-body">
+          <div class="t-time">17:00</div>
+          <div class="t-title">Никоҳ маросими · Регистрация</div>
+          <div class="t-uz">Тантанали қисм</div>
+          <div class="t-note">Торжественная церемония бракосочетания</div>
+        </div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-node"><svg class="star"><use href="#star8"></use></svg></div>
+        <div class="t-body">
+          <div class="t-time">18:00</div>
+          <div class="t-title">Праздничный банкет</div>
+          <div class="t-uz">Зиёфат</div>
+          <div class="t-note">Угощения, тосты и поздравления</div>
+        </div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-node"><svg class="star"><use href="#star8"></use></svg></div>
+        <div class="t-body">
+          <div class="t-time">19:30</div>
+          <div class="t-title">Танцы и музыка</div>
+          <div class="t-uz">Рақс ва мусиқа</div>
+          <div class="t-note">Живая музыка и национальные мелодии</div>
+        </div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-node"><svg class="star"><use href="#star8"></use></svg></div>
+        <div class="t-body">
+          <div class="t-time">21:00</div>
+          <div class="t-title">Свадебный торт</div>
+          <div class="t-uz">Тўй торти</div>
+        </div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-node"><svg class="star"><use href="#star8"></use></svg></div>
+        <div class="t-body">
+          <div class="t-time">22:00</div>
+          <div class="t-title">Завершение вечера</div>
+          <div class="t-uz">Якун</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg class="star"><use href="#star8"></use></svg></div>
+
+  <!-- ============ VENUE / MAP ============ -->
+  <section class="venue-sec" data-screen-label="Место">
+    <div class="sec-head reveal">
+      <div class="kicker">Қаерда</div>
+      <h2>Место торжества</h2>
+      <div class="h2-uz">Маросим манзили</div>
+    </div>
+    <div class="venue-card reveal-scale">
+      <div class="map-vis">
+        <span class="map-road r1"></span>
+        <span class="map-road r2"></span>
+        <span class="map-road r3"></span>
+        <div class="map-pin">
+          <span class="pin-dot"><svg class="star"><use href="#star8f"></use></svg></span>
+          <span class="pin-pulse"></span>
+        </div>
+      </div>
+      <div class="venue-info">
+        <div class="vname">Ресторан <span class="q">«Рай»</span></div>
+        <div class="vaddr">г. Сургут, ул. Праздничная, 1</div>
+        <div class="vaddr-uz">Сургут шаҳри</div>
+        <a class="route-btn" href="https://yandex.ru/maps/?text=ресторан Рай Сургут" target="_blank" rel="noopener">
+          Построить маршрут
+          <svg class="ar"><use href="#arrow"></use></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg class="star"><use href="#star8"></use></svg></div>
+
+  <!-- ============ WISHES / CONTACTS ============ -->
+  <section class="wishes" data-screen-label="Пожелания и контакты">
+    <div class="sec-head reveal">
+      <div class="kicker">Бир оғиз сўз</div>
+      <h2>Пожелания</h2>
+      <div class="h2-uz">Тилаклар</div>
+    </div>
+    <div class="wish-card reveal-scale">
+      <svg class="rosette"><use href="#rosette"></use></svg>
+      <div class="uz-note">Сизнинг иштирокингиз — биз учун энг катта совға!</div>
+      <p>Ваше присутствие рядом — лучший подарок для нас. Самое ценное — это тёплые слова, искренние улыбки и хорошее настроение.</p>
+      <p>Дресс-код: элегантный вечерний образ в тёплых, праздничных тонах.</p>
+    </div>
+    <div class="contacts reveal d1">
+      <div class="contact">
+        <div class="role">По организации</div>
+        <div class="cname">Шахзод</div>
+        <a class="tel" href="tel:+79220000000">+7 (922) 000-00-00</a>
+      </div>
+      <div class="contact">
+        <div class="role">По вопросам</div>
+        <div class="cname">Дилноза</div>
+        <a class="tel" href="tel:+79220000001">+7 (922) 000-00-01</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg class="star"><use href="#star8"></use></svg></div>
+
+  <!-- ============ RSVP ============ -->
+  <section class="rsvp" data-screen-label="RSVP">
+    <form class="rsvp-card reveal-scale" id="rsvp-form">
+      <svg class="star star-sm"><use href="#star8"></use></svg>
+      <div class="rsvp-h">
+        <div class="kicker">Жавоб беринг</div>
+        <h2>Подтвердите участие</h2>
+      </div>
+      <div class="rsvp-sub">Будем благодарны за ответ до <b>20 августа 2026</b> · 20 августгача</div>
+
+      <div class="field">
+        <label for="guestname">Ваше имя · Исмингиз</label>
+        <input type="text" id="guestname" name="guestname" placeholder="Имя и фамилия" autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label>Сможете прийти? · Кела оласизми?</label>
+        <div class="seg">
+          <label class="opt on">
+            <input type="radio" name="attend" value="yes" checked>
+            <span>С радостью приду</span>
+            <span class="uz">Албатта келаман</span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="attend" value="no">
+            <span>Не смогу</span>
+            <span class="uz">Кела олмайман</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field guests-field">
+        <label>Количество гостей · Меҳмонлар сони</label>
+        <div class="stepper">
+          <button type="button" id="g-minus" aria-label="Меньше">−</button>
+          <div class="val" id="guest-val">1</div>
+          <button type="button" id="g-plus" aria-label="Больше">+</button>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Отправить ответ · Жавобни юбориш</button>
+
+      <div class="rsvp-done" id="rsvp-done">
+        <svg class="star"><use href="#star8"></use></svg>
+        <h3>Раҳмат!</h3>
+        <div class="uz">Спасибо за ответ</div>
+        <p id="rsvp-done-msg"></p>
+        <div class="small">Сизни кутиб қоламиз · Ждём встречи</div>
+      </div>
+    </form>
+  </section>
+
+  <div class="divider"><svg class="star"><use href="#star8"></use></svg></div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot" data-screen-label="Футер">
+    <svg class="rosette reveal-scale"><use href="#rosette"></use></svg>
+    <div class="f-names reveal">Ильхом &amp; Келин</div>
+    <div class="f-uz reveal d1">Сизни кутамиз · Ждём вас</div>
+    <div class="f-date reveal d2">3 · 09 · 2026 — Сургут</div>
+  </footer>
+
+</main>
+
+<!-- React + Babel for the Tweaks panel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="wedding/tweaks-panel.jsx"></script>
+<script type="text/babel" src="wedding/tweaks-app.jsx"></script>
+
+<!-- Site logic -->
+<script src="wedding/site.js"></script>
+</body>
+</html>
